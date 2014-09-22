@@ -1,23 +1,23 @@
 {
-  "name": "pick-deep",
-  "description": "Flatten nested occurrences of a property to the root of an object.",
+  "name": "deep-pick",
+  "description": "Like lo-dash/underscore `.pick()` but recursively merges and picks deeply nested occurences of a property.",
   "version": "0.1.0",
-  "homepage": "https://github.com/jonschlinkert/pick-deep",
+  "homepage": "https://github.com/jonschlinkert/deep-pick",
   "author": {
     "name": "Jon Schlinkert",
     "url": "https://github.com/jonschlinkert"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jonschlinkert/pick-deep.git"
+    "url": "git://github.com/jonschlinkert/deep-pick.git"
   },
   "bugs": {
-    "url": "https://github.com/jonschlinkert/pick-deep/issues"
+    "url": "https://github.com/jonschlinkert/deep-pick/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jonschlinkert/pick-deep/blob/master/LICENSE-MIT"
+      "url": "https://github.com/jonschlinkert/deep-pick/blob/master/LICENSE-MIT"
     }
   ],
   "main": "index.js",

@@ -1,13 +1,13 @@
-# flatten-object [![NPM version](https://badge.fury.io/js/flatten-object.svg)](http://badge.fury.io/js/flatten-object)
+# deep-pick [![NPM version](https://badge.fury.io/js/deep-pick.svg)](http://badge.fury.io/js/deep-pick)
 
 
-> Flatten nested occurrences of a property to the root of an object.
+> Like lo-dash/underscore `.pick()` but recursively merges and picks deeply nested occurences of a property.
 
 ## Install
 #### Install with [npm](npmjs.org)
 
 ```bash
-npm i flatten-object --save
+npm i deep-pick --save
 ```
 
 ## Run tests
@@ -19,27 +19,21 @@ npm test
 ## Usage
 
 ```js
-var flatten = require('flatten-object');
+var deepPick = require('deep-pick');
+var obj = {foo: {a: 'a'}, bar: {foo: {b: 'b'}}, baz: 'baz'};
 
-flatten({foo: {a: 'a'}, bar: {foo: {b: 'b'}}, baz: 'baz'}, 'foo');
-//=> {foo: {a: 'a', b: 'b'}, baz: 'baz'}
-```
-
-### options.pick
-
-Pass `{pick: true}` on the options to only return `foo`:
-
-```js
-flatten({foo: {a: 'a'}, bar: {foo: {b: 'b'}}}, 'foo', {pick: true});
-//=> {a: 'a', b: 'b'}
+deepPick(obj, 'foo');
+//=> {foo: {a: 'a', b: 'b'}}
 ```
 
 ### options.value
 
-Pass `{value: true}` on the options to only return the value of `foo`:
+Pass `value: true` to return **only the value** for the specified property:
 
 ```js
-flatten({foo: {a: 'a'}, bar: {foo: {b: 'b'}}, baz: 'baz'}, 'foo', {value: true});
+var obj = {foo: {a: 'a'}, bar: {foo: {b: 'b'}}, baz: 'baz'};
+
+deepPick(obj, 'foo', {value: true});
 //=> {a: 'a', b: 'b'}
 ```
 

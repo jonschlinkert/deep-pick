@@ -1,5 +1,5 @@
 /*!
- * flatten-object <https://github.com/jonschlinkert/flatten-object>
+ * deep-pick <https://github.com/jonschlinkert/deep-pick>
  *
  * Copyright (c) 2014 Jon Schlinkert, contributors.
  * Licensed under the MIT License
@@ -12,27 +12,20 @@ var isObject = require('isobject');
 var mixinDeep = require('mixin-deep');
 var pick = require('object-pick');
 
-
-module.exports = function flattenObject(o, prop, options) {
-  options = options || {};
-
-  if (options.value === true) {
-    return flatten(o, prop)[prop];
+module.exports = function flattenObject(obj, prop, options) {
+  var value = pick(flatten(obj, prop), prop);
+  if (options && options.value === true) {
+    return value[prop];
   }
-
-  if (options.pick === true) {
-    return pick(flatten(o, prop), prop);
-  }
-
-  return flatten(o, prop);
+  return value;
 };
 
-
-function flatten(o, prop) {
-  return reduce(o, function (acc, value, key) {
+function flatten(obj, prop) {
+  return reduce(obj, function (acc, value, key) {
     if (key === prop) {
       acc[prop] = value;
     }
+
     if (isObject(value)) {
       if (value.hasOwnProperty(prop) && isObject(value[prop])) {
         mixinDeep(acc, value);
